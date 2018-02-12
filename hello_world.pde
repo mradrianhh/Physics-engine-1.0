@@ -1,3 +1,4 @@
+
 /*
 Create a universal object(particle?), which every object inherits from?
 Planet class? Planet inherits particle?
@@ -6,7 +7,7 @@ Universe? Launch class = universe? Universe controls everything? god?
 
 Star/planet?
   Forces:
-  -Gravity
+    -Gravity
   -Friction
   -Drag(Resistance)
   -Pull
@@ -14,18 +15,21 @@ Star/planet?
 Base classes == Universe & particle? Auxiliary classes inherits particle?
 Newtons third law!!!
 Example 1:
-  location = [0,0]
+
+location = [0,0]
   velocity = [0,0]
   acceleration = [0,0]
   gravity = [0,1]
-  acceleration.add(gravity);  velocity.add(acceleration);
+  acceleration.add(gravity);  
+  velocity.add(acceleration);
   location.add(velocity);
-  
-i  0s:
+ 
+  0s:
     location = [0,0]
+
     velocity = [0,0]
-    acceleration = [0,0]
-  1s:
+
+acceleration = [0,0]r  1s:
     location = [0,1]
     velocity = [0,1]
     acceleration = [0,1]
@@ -48,6 +52,31 @@ i  0s:
     opposingForce = velocity.add(acceleration);
     opposingForce.mult(-1);
     p.applyForce(opposingForce);
+  }
+  
+  for(Particle particle : particles){
+    for(Planet planet : planets){
+      particle.applyForce(createForce(calculateGravity(gravityConstant, particle.mass, planet.mass, calculateDist(particle.location, planet.location)), createUnitVector(particle.location, planet.location)), particle);
+      
+    }
+  }
+  
+  boolean checkContact(Planet planet, Particle particle){
+    if(calculateDist(planet.location, particle.location <= (planet.diameter + particle.diameter)){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  
+  for(int i = particles.size()-1; i >= 0; i--){
+    Particle particle = particles.get(i);
+    for(int j = planets.size()-1; j >= 0; j--){
+      Planet planet = planets.get(j);
+      if(checkContact(planet, particle){
+        particle.remove(i);
+      }
+    }
   }
   
 */
